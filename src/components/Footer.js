@@ -1,9 +1,13 @@
 import React from "react";
 
 const Footer = () => {
+  const getCopyrightDate = () => {
+    const date = new Date();
+    return date.getFullYear();
+  };
   return (
     <footer>
-      <h6>design and developed by Razieh Boroon</h6>
+      <h5>&copy; {getCopyrightDate()} Razieh Boroon. all rights reserved</h5>
     </footer>
   );
 };

@@ -656,6 +656,10 @@ footer {
   .about-content h2 {
     padding: 1rem;
   }
+
+  footer {
+    letter-spacing: 0.1rem;
+  }
 }
 
 @media screen and (max-width: 400px) {
