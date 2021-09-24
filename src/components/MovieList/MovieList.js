@@ -1,8 +1,9 @@
 import React from "react";
-import Loading from "./Loading";
-import Movie from "./Movie";
-import MoviePagination from "./MoviePagination";
-import { useGlobalContext } from "../context";
+import "./MovieList.scss";
+import Loading from "../Loading/Loading";
+import Movie from "../Movie/Movie";
+import MoviePagination from "../MoviePagination/MoviePagination";
+import { useGlobalContext } from "../../context";
 import { Link } from "react-router-dom";
 
 const MovieList = () => {

@@ -1,4 +1,7 @@
+//resource related to loading animation is available at https://loading.io/css/
+
 import React from "react";
+import "./Loading.scss";
 
 const Loading = () => {
   return (
@@ -14,5 +17,3 @@ const Loading = () => {
 };
 
 export default Loading;
-
-// https://loading.io/css/

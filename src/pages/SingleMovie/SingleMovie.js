@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Loading from "../components/Loading";
-import Error from "./Error";
+import "./SingleMovie.scss";
+import Loading from "../../components/Loading/Loading";
+import Error from "../Error/Error";
 import Button from "@material-ui/core/Button";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import { useParams } from "react-router-dom";
-import { useGlobalContext } from "../context";
+import Carousel from "../../components/Carousel/Carousel";
 import {
+  useGlobalContext,
   img_film_300,
   api_secret,
   BASE_API,
   unavailable_Landscape,
   img_unavailable,
-} from "../context";
+} from "../../context";
 
 const SingleMovie = () => {
   const { id } = useParams();
@@ -20,6 +22,7 @@ const SingleMovie = () => {
   const [videoKey, setVideoKey] = useState("");
   const { screenWidth } = useGlobalContext();
 
+  //fetching data of a single movie from API
   useEffect(() => {
     const fetchFilm = async () => {
       try {
@@ -33,6 +36,7 @@ const SingleMovie = () => {
       }
     };
 
+    //fetching the videokey of the a particular movie by its ID from API
     const fetchVideo = async () => {
       try {
         const response = await fetch(
@@ -51,12 +55,17 @@ const SingleMovie = () => {
     fetchVideo();
   }, [id]);
 
+  //while loading data from API show loading animation
   if (loading) {
     return <Loading />;
   }
+
+  //in case of resource not found
   if (!film || film.status_code === 34) {
     return <Error />;
   }
+
+  //destructuring movie data recieved from API
   const {
     genres,
     poster_path,
@@ -111,7 +120,7 @@ const SingleMovie = () => {
           </div>
           {/* movie info */}
           <div className="info-container">
-            {/* name & rating */}
+            {/* movie title & rating */}
             <div className="header">
               <h3 className="title">{title}</h3>
               <h5 className="release-date">
@@ -139,9 +148,15 @@ const SingleMovie = () => {
                 );
               })}
             </div>
-
+            {/* movie summary */}
             {overview && <h4 className="overviwe">{overview}</h4>}
+            {/* carousel for showing cast of a movie */}
+            <div className="carousel">
+              <Carousel id={id} />
+            </div>
 
+            {/* youtube btn */}
+            {/* if there is videokey, therefore is a related video on Youtube */}
             {videoKey && (
               <Button
                 className="youtube-btn"

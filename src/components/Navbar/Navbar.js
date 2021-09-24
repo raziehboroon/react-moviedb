@@ -1,7 +1,8 @@
 import React from "react";
+import "./Navbar.scss";
 import { Link } from "react-router-dom";
-import logo from "../moviedblogo.svg";
-// import logoS from "../logoS.svg";
+import logo from "../../images/moviedblogo.svg";
+
 const Navbar = () => {
   return (
     <nav className="navbar">

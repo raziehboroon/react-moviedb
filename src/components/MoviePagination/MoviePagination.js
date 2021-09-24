@@ -1,6 +1,7 @@
 import React from "react";
+import "./MoviePagination.scss";
 import { Pagination } from "@material-ui/lab";
-import { useGlobalContext } from "../context";
+import { useGlobalContext } from "../../context";
 
 const MoviePagination = () => {
   const { page, setPage, totalPages, screenWidth } = useGlobalContext();
@@ -9,6 +10,7 @@ const MoviePagination = () => {
     setPage(Number(value));
   };
 
+  // proper pagination size base on screen size
   let sizeValue = "";
   if (screenWidth < 400) {
     sizeValue = "small";

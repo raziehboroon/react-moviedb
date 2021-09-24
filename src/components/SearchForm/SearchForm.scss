@@ -1,0 +1,37 @@
+@import "../../App.scss";
+
+header {
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  margin: 0.5rem 1rem;
+  width: 50%;
+}
+
+form input {
+  padding: 0.5rem;
+  border-radius: 3rem;
+  width: 100%;
+  outline: none;
+  background-color: $clr-grey-3;
+  border: 0.2rem solid $clr-grey-1;
+  color: $clr-grey-10;
+  box-shadow: $light-shadow;
+}
+form input:hover {
+  box-shadow: $dark-shadow;
+}
+
+form ::placeholder {
+  color: $clr-grey-7;
+}
+
+@media screen and (max-width: 800px) {
+  form {
+    width: 100%;
+  }
+}

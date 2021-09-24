@@ -1,0 +1,89 @@
+@import "../../App.scss";
+
+.movie {
+  width: 200px;
+  /* height: 370px; */
+  max-height: 100%;
+  margin: 1rem;
+  background-color: $clr-grey-3;
+  box-shadow: $light-shadow;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.movie img {
+  width: 100%;
+  padding: 0.3rem;
+  border-radius: 1rem;
+}
+
+.movie-info {
+  color: $clr-grey-10;
+  padding: 0.5rem 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-wrap: nowrap; */
+}
+
+.movie-info h4 {
+  margin-top: 0;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  line-height: 1rem;
+  letter-spacing: 0.1rem;
+}
+
+.movie-info .movie-rate {
+  font-weight: bold;
+  font-size: 0.8rem;
+  border-radius: 3px;
+  padding: 0.25rem 0.5rem;
+  background-color: $clr-grey-2;
+}
+
+.movie-rate.green {
+  color: greenyellow;
+}
+
+.movie-rate.orange {
+  color: orange;
+}
+
+.movie-rate.red {
+  color: red;
+}
+.movie-summary {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: $clr-grey-1;
+  background-color: $clr-grey-10;
+  padding: 0.5rem;
+  transform: translateY(101%);
+  transition: transform 0.3s ease-in;
+  max-height: 100%;
+}
+
+.movie:hover {
+  box-shadow: $dark-shadow;
+}
+
+.movie:hover .movie-summary {
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 800px) {
+  .movie {
+    margin: 0.2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .movie {
+    width: 45%;
+    max-height: 100%;
+  }
+}

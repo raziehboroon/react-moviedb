@@ -1,0 +1,82 @@
+@import "../../App.scss";
+
+.error-section {
+  background-color: $clr-primary-10;
+}
+
+.error-container {
+  min-height: calc(100vh - 6rem);
+  max-height: 100%;
+  width: 85vw;
+  max-width: $max-width;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.error-content {
+  flex-basis: 40%;
+  padding: 1rem 0;
+}
+
+.error-title {
+  padding: 1rem 0 3rem;
+}
+
+.error-content p {
+  padding-bottom: 2rem;
+  color: $clr-grey-5;
+}
+
+.btn {
+  border-radius: $radius;
+  border: none;
+  padding: 0.7rem;
+  color: $clr-grey-2;
+  font-weight: bold;
+  text-transform: capitalize;
+  box-shadow: $light-shadow;
+  transition: $transition;
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: $dark-shadow;
+}
+.error-btn {
+  background-color: #91b3f0;
+}
+
+.error-btn:hover {
+  background-color: $clr-primary-5;
+  color: $clr-grey-1;
+}
+.error-image {
+  max-width: 800px;
+  max-height: 800px;
+  padding: 1rem 0;
+}
+
+.error-image img {
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .error-container {
+    flex-direction: column-reverse;
+    justify-content: space-around;
+  }
+  .error-content h2,
+  p {
+    display: none;
+  }
+  .error-content {
+    flex-basis: 20%;
+
+    text-align: center;
+  }
+  .error-title {
+    padding: 1rem;
+  }
+}

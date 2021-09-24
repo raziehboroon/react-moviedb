@@ -1,0 +1,21 @@
+@import "../../App.scss";
+
+footer {
+  text-transform: capitalize;
+  letter-spacing: $spacing;
+  height: 3rem;
+  background-color: $clr-grey-1;
+  color: $clr-grey-7;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  line-height: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  footer {
+    letter-spacing: 0.1rem;
+  }
+}

@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./index.scss";
 import React from "react";
-import Navbar from "./components/Navbar";
-import About from "./pages/About";
-import Error from "./pages/Error";
-import Home from "./pages/Home";
-import Footer from "./components/Footer";
-import Movie from "./components/Movie";
-import SingleMovie from "./pages/SingleMovie";
+import Navbar from "./components/Navbar/Navbar";
+import About from "./pages/About/About";
+import Error from "./pages/Error/Error";
+import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/Footer";
+import Movie from "./components/Movie/Movie";
+import SingleMovie from "./pages/SingleMovie/SingleMovie";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/about">
+        <Route exact path="/about">
           <About />
         </Route>
         <Route exact path="/Movie/:id" children={<Movie />}>

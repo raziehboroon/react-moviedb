@@ -1,0 +1,54 @@
+@import "../../App.scss";
+.navbar {
+  height: 3rem;
+  background-color: $clr-grey-1;
+  box-shadow: $dark-shadow;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  z-index: 10;
+}
+
+.nav-center {
+  width: 85vw;
+  max-width: 1170px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  width: 8rem;
+}
+
+.links li {
+  display: inline;
+}
+.links a {
+  padding: 0.5rem 0.75rem;
+  display: inline-block;
+  font-size: 1rem;
+  color: $clr-grey-10;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: $clr-primary-7;
+}
+
+@media screen and (max-width: 800px) {
+  .nav-center {
+    width: 95vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .nav-logo {
+    // in small screen use smaller version logo
+    content: url("../../images/moviedblogoSmall.svg");
+    width: 4rem;
+  }
+  .links a {
+    padding: 0.25rem 0.4rem;
+  }
+}

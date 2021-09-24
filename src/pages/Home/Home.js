@@ -1,6 +1,7 @@
 import React from "react";
-import SearchForm from "../components/SearchForm";
-import MovieList from "../components/MovieList";
+import "./Home.scss";
+import SearchForm from "../../components/SearchForm/SearchForm";
+import MovieList from "../../components/MovieList/MovieList";
 
 const Home = () => {
   return (
