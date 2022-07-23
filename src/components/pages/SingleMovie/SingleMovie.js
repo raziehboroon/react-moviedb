@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./SingleMovie.scss";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../../Loading/Loading";
 import Error from "../Error/Error";
 import Button from "@material-ui/core/Button";
 import YouTubeIcon from "@material-ui/icons/YouTube";
 import { useParams } from "react-router-dom";
-import Carousel from "../../components/Carousel/Carousel";
+import Carousel from "../../Carousel/Carousel";
 import {
   useGlobalContext,
   img_film_300,
@@ -13,7 +13,7 @@ import {
   BASE_API,
   unavailable_Landscape,
   img_unavailable,
-} from "../../context";
+} from "../../../context";
 
 const SingleMovie = () => {
   const { id } = useParams();

@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.scss";
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
-import About from "./pages/About/About";
-import Error from "./pages/Error/Error";
-import Home from "./pages/Home/Home";
+import About from "./components/pages/About/About";
+import Error from "./components/pages/Error/Error";
+import Home from "./components/pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
-import SingleMovie from "./pages/SingleMovie/SingleMovie";
+import SingleMovie from "./components/pages/SingleMovie/SingleMovie";
 
 function App() {
   return (

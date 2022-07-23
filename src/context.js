@@ -53,11 +53,11 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        loading,
         films,
+        loading,
+        setLoading,
         searchTerm,
         setSearchTerm,
-        setLoading,
         page,
         setPage,
         totalPages,
