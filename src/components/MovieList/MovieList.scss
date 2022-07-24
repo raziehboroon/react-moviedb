@@ -7,16 +7,15 @@
   justify-content: center;
   margin: auto;
   padding-bottom: 1rem;
-}
-
-.movies-container.no-movie {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.no-movie .title {
-  margin: 3rem 0 1rem;
-  text-shadow: 1px 5px 15px rgba(0, 0, 0, 0.2);
-  text-align: center;
+  &.no-movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .title {
+      margin: 3rem 0 1rem;
+      text-shadow: 1px 5px 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+  }
 }

@@ -1,27 +1,19 @@
-import React from "react";
 import "./Movie.scss";
+import React from "react";
 import { Link } from "react-router-dom";
-import { img_film_300, img_unavailable } from "../../context";
+// Function(s)
+import { img_film_300, img_unavailable } from "../../helpers/urls";
+import { voteAverageColor } from "../../helpers/functions";
 
 const Movie = ({ id, title, overview, poster_path, vote_average }) => {
   // small box containg movie rating on each movie component, diffrent color based on diffrent rating rage
-  const voteAverageColor = (vote_average) => {
-    if (vote_average === 0) {
-      return;
-    } else if (vote_average >= 7) {
-      return "green";
-    } else if (vote_average >= 5) {
-      return "orange";
-    } else {
-      return "red";
-    }
-  };
+
   return (
     <article className="movie">
       <Link to={`/Movie/${id}`}>
         <img
           src={poster_path ? `${img_film_300}${poster_path}` : img_unavailable}
-          alt="poster"
+          alt={`${title}'s poster`}
         />
         <div className="movie-info">
           <h4 className="movie-title">

@@ -1,10 +1,12 @@
-import React from "react";
 import "./MoviePagination.scss";
+import React from "react";
+// Context
+import { useGlobalContext } from "../../context/context";
+// Tools
 import { Pagination } from "@material-ui/lab";
-import { useGlobalContext } from "../../context";
 
 const MoviePagination = () => {
-  const { page, setPage, totalPages, screenWidth } = useGlobalContext();
+  const { page, setPage, screenWidth } = useGlobalContext();
   const handleChangePage = (event, value) => {
     window.scroll(0, 0);
     setPage(Number(value));
@@ -19,11 +21,13 @@ const MoviePagination = () => {
   }
 
   return (
+    // total number of pages not working anymore, it apperars the maximom number of page which is available is 500
+    // count={filmsObj.total_pages}
     <div className="pagination-container">
       <Pagination
         color="primary"
         variant="outlined"
-        count={totalPages}
+        count={501}
         page={page}
         siblingCount={1}
         boundaryCount={1}

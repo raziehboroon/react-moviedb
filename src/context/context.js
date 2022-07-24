@@ -1,23 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-
+import getData from "../services/api";
 export const api_secret = process.env.REACT_APP_API_KEY;
-export const img_film_300 = "https://image.tmdb.org/t/p/w300";
-export const img_film_500 = "https://image.tmdb.org/t/p/w500";
-export const BASE_API = "https://api.themoviedb.org/3/movie/";
-export const img_unavailable =
-  "https://www.movienewz.com/img/films/poster-holder.jpg";
-export const unavailable_Landscape =
-  "https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [films, setFilms] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [filmsObj, setFilmsObj] = useState({});
+  const [page, setPage] = useState(1);
 
   window.addEventListener("resize", () => {
     setScreenWidth(window.innerWidth);
@@ -26,19 +18,19 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     const fetchFilms = async () => {
       let url = "";
+      console.log(page);
       if (searchTerm) {
         url = `https://api.themoviedb.org/3/search/movie?api_key=${api_secret}&sort_by=popularity.desc&page=${page}&query=${searchTerm}`;
       } else {
         url = `https://api.themoviedb.org/3/discover/movie?api_key=${api_secret}&sort_by=popularity.desc&page=${page}`;
       }
       try {
-        const response = await fetch(url);
-        const films = await response.json();
-        if (films.results) {
-          setTotalPages(films.total_pages);
-          setFilms(films.results);
+        const response = await getData(url);
+        console.log(response);
+        if (response.results) {
+          setFilmsObj(response);
         } else {
-          setFilms([]);
+          setFilmsObj({});
         }
         setLoading(false);
       } catch (err) {
@@ -53,15 +45,13 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        films,
+        filmsObj,
         loading,
         setLoading,
         searchTerm,
         setSearchTerm,
         page,
         setPage,
-        totalPages,
-        setTotalPages,
         screenWidth,
       }}
     >

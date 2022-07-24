@@ -1,14 +1,12 @@
-import React from "react";
 import "./Footer.scss";
+import React from "react";
+// Function(s)
+import { getDate } from "../../helpers/functions";
 
 const Footer = () => {
-  const getCopyrightDate = () => {
-    const date = new Date();
-    return date.getFullYear();
-  };
   return (
     <footer>
-      <h5>&copy; {getCopyrightDate()} Razieh Boroon. all rights reserved</h5>
+      <h5>&copy; {getDate()} Razieh Boroon. all rights reserved</h5>
     </footer>
   );
 };

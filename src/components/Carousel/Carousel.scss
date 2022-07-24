@@ -1,34 +1,28 @@
 @import "../../App.scss";
 @import "react-alice-carousel/lib/alice-carousel.css";
 
-.alice-carousel,
-.alice-carousel__stage {
-  width: calc(100vw - 40%) !important;
+.alice-carousel__wrapper {
+  width: 50vw !important;
+  // display: none;
+  background-color: $clr-primary-9;
+  border-radius: $radius;
 }
-
-.carousel {
-  width: calc(100vw - 40%) !important;
+.alice-carousel {
   background-color: $clr-primary-9;
   border-radius: $radius;
   margin-bottom: 0.5rem;
 }
 .carousel-item {
-  display: flex;
-  flex-direction: column;
   padding: 10px;
-  object-fit: contain;
-  max-width: 150px;
 }
-
 .carousel-img {
-  max-width: 200px;
   border-radius: $radius;
   margin-bottom: 5px;
   box-shadow: $light-shadow;
 }
 
 @media screen and (max-width: 800px) {
-  .carousel {
-    min-width: 100%;
+  .alice-carousel__wrapper {
+    width: 100% !important;
   }
 }

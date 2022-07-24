@@ -1,15 +1,15 @@
 // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
 
-import React, { useState, useEffect } from "react";
 import "./Carousel.scss";
+import React, { useState, useEffect } from "react";
+// Component
+import { api_secret } from "../../context/context";
+// Tools
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import {
-  api_secret,
-  BASE_API,
-  img_film_300,
-  img_unavailable,
-} from "../../context";
+// Function(s)
+import { BASE_API, img_film_300, img_unavailable } from "../../helpers/urls";
+import getData from "../../services/api";
 
 const Carousel = ({ id }) => {
   const [credits, setCredits] = useState([]);
@@ -17,10 +17,9 @@ const Carousel = ({ id }) => {
   useEffect(() => {
     const fetchCast = async () => {
       try {
-        const response = await fetch(
+        const data = await getData(
           `${BASE_API}${id}/credits?api_key=${api_secret}`
         );
-        const data = await response.json();
         setCredits(data.cast);
       } catch (err) {
         console.log(err);
@@ -30,7 +29,9 @@ const Carousel = ({ id }) => {
     fetchCast();
   }, [id]);
 
+  // draging imag of carousel
   const handleDragStart = (e) => e.preventDefault();
+
   const items = credits?.map((person) => (
     <div className="carousel-item">
       <img
@@ -71,9 +72,10 @@ const Carousel = ({ id }) => {
       responsive={responsive}
       autoPlay
       infinite
-      disableDotsControls
+      // disableDotsControls
       disableButtonsControls
       items={items}
+      // autoWidth={true}
     />
   );
 };

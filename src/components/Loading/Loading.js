@@ -1,7 +1,7 @@
 //resource related to loading animation is available at https://loading.io/css/
 
-import React from "react";
 import "./Loading.scss";
+import React from "react";
 
 const Loading = () => {
   return (

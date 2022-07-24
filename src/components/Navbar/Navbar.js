@@ -1,5 +1,5 @@
-import React from "react";
 import "./Navbar.scss";
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/moviedblogo.svg";
 

@@ -2,22 +2,20 @@
 
 .about-section {
   background-color: $clr-primary-10;
-}
+  .about-content {
+    max-width: 85vw;
+    margin: 0 auto;
+    h2 {
+      text-align: center;
+      padding: 3rem 3rem 2rem;
+    }
 
-.about-content {
-  max-width: 85vw;
-  margin: 0 auto;
-}
-
-.about-content h2 {
-  text-align: center;
-  padding: 3rem 3rem 2rem;
-}
-
-.about-content h4 {
-  text-align: center;
-  /* text-align: justify;
-  text-justify: inter-word; */
+    h4 {
+      text-align: center;
+      /* text-align: justify;
+     text-justify: inter-word; */
+    }
+  }
 }
 
 @media screen and (max-width: 800px) {

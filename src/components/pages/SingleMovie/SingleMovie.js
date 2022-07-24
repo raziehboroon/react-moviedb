@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react";
 import "./SingleMovie.scss";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+// Component(s)
 import Loading from "../../Loading/Loading";
 import Error from "../Error/Error";
+import Poster from "./Poster";
+import Carousel from "../../Carousel/Carousel";
+// Tools
 import Button from "@material-ui/core/Button";
 import YouTubeIcon from "@material-ui/icons/YouTube";
-import { useParams } from "react-router-dom";
-import Carousel from "../../Carousel/Carousel";
-import {
-  useGlobalContext,
-  img_film_300,
-  api_secret,
-  BASE_API,
-  unavailable_Landscape,
-  img_unavailable,
-} from "../../../context";
+// Function(s)
+import getData from "../../../services/api";
+import { summarizeVoteCount } from "../../../helpers/functions";
+import { BASE_API } from "../../../helpers/urls";
+// Context
+import { api_secret } from "../../../context/context";
 
 const SingleMovie = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [film, setFilm] = useState(null);
   const [videoKey, setVideoKey] = useState("");
-  const { screenWidth } = useGlobalContext();
 
   //fetching data of a single movie from API
   useEffect(() => {
     const fetchFilm = async () => {
       try {
-        const response = await fetch(`${BASE_API}${id}?api_key=${api_secret}`);
-        const data = await response.json();
+        const data = await getData(`${BASE_API}${id}?api_key=${api_secret}`);
+
         setFilm(data);
         setLoading(false);
       } catch (err) {
@@ -39,10 +39,9 @@ const SingleMovie = () => {
     //fetching the videokey of the a particular movie by its ID from API
     const fetchVideo = async () => {
       try {
-        const response = await fetch(
+        const data = await getData(
           `${BASE_API}${id}/videos?api_key=${api_secret}`
         );
-        const data = await response.json();
         setVideoKey(data.results[0]?.key);
         // setLoading(false);
       } catch (err) {
@@ -78,46 +77,12 @@ const SingleMovie = () => {
     runtime,
   } = film;
 
-  const summarizeVoteCount = (vote_count) => {
-    if (vote_count > 1000000) {
-      return `${vote_count.toString().slice(0, -6)}M`;
-    }
-    if (vote_count > 1000) {
-      return `${vote_count.toString().slice(0, -3)}K`;
-    }
-    return vote_count;
-  };
-
   return (
     <main>
       <section className="section singleMovie-section">
         <div className="singleMovie-container">
           {/* Movie poster */}
-          <div className="poster-container">
-            {/* conditional rendering for vertical and landscape movie poster */}
-            {screenWidth > 800 ? (
-              poster_path ? (
-                <img src={`${img_film_300}${poster_path}`} alt="movie poster" />
-              ) : (
-                <img
-                  src={img_unavailable}
-                  className="unavailable-image"
-                  alt="poster not available"
-                />
-              )
-            ) : backdrop_path ? (
-              <img
-                src={`${img_film_300}${backdrop_path}`}
-                alt="movie backdrop"
-              />
-            ) : (
-              <img
-                src={unavailable_Landscape}
-                className="unavailable-image"
-                alt="poster not available"
-              />
-            )}
-          </div>
+          <Poster poster_path={poster_path} backdrop_path={backdrop_path} />
           {/* movie info */}
           <div className="info-container">
             {/* movie title & rating */}
@@ -131,7 +96,7 @@ const SingleMovie = () => {
               <div className="rating-container">
                 <h6 className="rating-title">Rating</h6>
                 <h4 className="rating">
-                  <span>{vote_average}</span>/10
+                  <span>{vote_average.toFixed(1)}</span>/10
                 </h4>
                 <span className="vote-count">
                   {summarizeVoteCount(vote_count)}
@@ -151,7 +116,8 @@ const SingleMovie = () => {
             {/* movie summary */}
             {overview && <h4 className="overviwe">{overview}</h4>}
             {/* carousel for showing cast of a movie */}
-            <div className="carousel">
+            <div>
+              {/* hallllllo */}
               <Carousel id={id} />
             </div>
 

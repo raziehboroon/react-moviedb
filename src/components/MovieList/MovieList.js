@@ -1,18 +1,22 @@
-import React from "react";
 import "./MovieList.scss";
+import React from "react";
+import { Link } from "react-router-dom";
+// Component(s)
 import Loading from "../Loading/Loading";
 import Movie from "../Movie/Movie";
 import MoviePagination from "../MoviePagination/MoviePagination";
-import { useGlobalContext } from "../../context";
-import { Link } from "react-router-dom";
+// Context
+import { useGlobalContext } from "../../context/context";
 
 const MovieList = () => {
-  const { loading, films, totalPages, setSearchTerm } = useGlobalContext();
+  // const { loading, films, totalPages, setSearchTerm } = useGlobalContext();
+  const { loading, filmsObj, setSearchTerm } = useGlobalContext();
+
   if (loading) {
     return <Loading />;
   }
 
-  if (films.length < 1) {
+  if (filmsObj.results.length < 1) {
     return (
       <div className="movies-container no-movie">
         <h3 className="title">
@@ -33,11 +37,11 @@ const MovieList = () => {
   return (
     <>
       <div className="movies-container">
-        {films.map((film, index) => (
-          <Movie key={index} {...film} />
+        {filmsObj.results.map((film) => (
+          <Movie key={film.id} {...film} />
         ))}
       </div>
-      {totalPages > 1 && <MoviePagination></MoviePagination>}
+      {filmsObj.total_pages > 1 && <MoviePagination></MoviePagination>}
     </>
   );
 };
