@@ -71,6 +71,7 @@ const Carousel = ({ id }) => {
       mouseTracking
       responsive={responsive}
       autoPlay
+      autoPlayInterval={800}
       infinite
       // disableDotsControls
       disableButtonsControls

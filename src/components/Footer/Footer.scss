@@ -12,6 +12,10 @@ footer {
   align-items: center;
   width: 100vw;
   line-height: 1rem;
+  a {
+    text-decoration: none;
+    color: $clr-primary-7;
+  }
 }
 
 @media screen and (max-width: 800px) {

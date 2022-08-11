@@ -18,7 +18,7 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     const fetchFilms = async () => {
       let url = "";
-      console.log(page);
+      // console.log(page);
       if (searchTerm) {
         url = `https://api.themoviedb.org/3/search/movie?api_key=${api_secret}&sort_by=popularity.desc&page=${page}&query=${searchTerm}`;
       } else {
@@ -26,7 +26,7 @@ const AppProvider = ({ children }) => {
       }
       try {
         const response = await getData(url);
-        console.log(response);
+        // console.log(response);
         if (response.results) {
           setFilmsObj(response);
         } else {

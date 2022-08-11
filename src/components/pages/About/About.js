@@ -8,8 +8,11 @@ const About = () => {
         <div className="about-content">
           <h2>About</h2>
           <h4>
-            This product uses the TMDb API but is not endorsed or certified by
-            TMDb.
+            This product uses the{" "}
+            <a href="https://www.themoviedb.org/documentation/api?language=en-US">
+              TMDb
+            </a>{" "}
+            API but is not endorsed or certified by TMDb.
           </h4>
         </div>
       </section>
